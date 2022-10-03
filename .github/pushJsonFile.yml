@@ -1,0 +1,42 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Commit and push it to a protected branch
+  # You may pin to the exact commit or the version.
+  # uses: Amraneze/push-to-protected-branch@e7629adea078d49078d480b7e477bc99014c144d
+        uses: Amraneze/push-to-protected-branch@v1.5.0
+        with:
+      # The repository's name.
+          repository: https://acutestcloud@dev.azure.com/acutestcloud/SandBox/_git/SandBox
+    # The repository's branch name. By default, it's 'main'.
+          branch_name: main
+    # Github's secret token to use on requests to the Github API.
+          github_token: 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
+    # The message to be used in the commit.
+          commit_message: Push Json File
+    # Path of files to commit (the files should be seperated with ','). Example: 'package.json,main.py'.
+          files_to_commit: C:\Users\p50069059\OneDrive - Capita\Desktop\30-09-2022_JsonFile
